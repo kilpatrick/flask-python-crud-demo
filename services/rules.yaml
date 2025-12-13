@@ -1,0 +1,393 @@
+# --------------------------------------------
+# WIP STUB: OpenAPI Documentation
+# If you don't have it setup locally, you can use
+# Swagger's visualizer for an interactive, graphical
+# representation of this schema by pasting it into:
+# https://editor.swagger.io
+# --------------------------------------------
+
+openapi: 3.0.4
+info:
+  title: Rules Demo Service
+  description: POC for a hypothetical rules service.
+  version: 0.0.1
+
+servers:
+  - url: http://127.0.0.1:5000
+    description: HTTP, locally run flask server (see proj. README for more info.)
+
+paths:
+  /rules:
+    post:
+      summary: Creates a new rule.
+      description: TODO
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rule'
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSingleRule'
+    get:
+      summary: Gets a list of rules.
+      description: TODO
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseManyRules'
+  /rules/{ruleID}:
+    get:
+      summary: Get a rule by ID.
+      description: TODO
+      parameters:
+        - in: path
+          name: ruleID
+          schema:
+            type: string
+          required: true
+          description: ID of the rule to get
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSingleRule'
+    patch:
+      summary: Updates a rule by ID.
+      description: TODO
+      parameters:
+        - in: path
+          name: ruleID
+          schema:
+            type: string
+          required: true
+          description: ID of the rule to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rule'
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSingleRule'
+    delete:
+      summary: Deletes a rule by ID.
+      description: TODO
+      parameters:
+        - in: path
+          name: ruleID
+          schema:
+            type: string
+          required: true
+          description: ID of the rule to delete
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+  /conditions:
+    post:
+      summary: Creates a new condition.
+      description: TODO
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Condition'
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSingleCondition'
+    get:
+      summary: Gets a list of conditions.
+      description: TODO
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseManyConditions'
+  /conditions/{conditionID}:
+    get:
+      summary: Get a condition by ID.
+      description: TODO
+      parameters:
+        - in: path
+          name: conditionID
+          schema:
+            type: string
+          required: true
+          description: ID of the condition to get
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSingleCondition'
+    patch:
+      summary: Updates a condition by ID.
+      description: TODO
+      parameters:
+        - in: path
+          name: conditionID
+          schema:
+            type: string
+          required: true
+          description: ID of the condition to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Condition'
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSingleCondition'
+    delete:
+      summary: Deletes a condition by ID.
+      description: TODO
+      parameters:
+        - in: path
+          name: conditionID
+          schema:
+            type: string
+          required: true
+          description: ID of the condition to delete
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+  /actions:
+    post:
+      summary: Creates a new action.
+      description: TODO
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Action'
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSingleAction'
+    get:
+      summary: Gets a list of actions.
+      description: TODO
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseManyActions'
+  /actions/{actionID}:
+    get:
+      summary: Get a action by ID.
+      description: TODO
+      parameters:
+        - in: path
+          name: actionID
+          schema:
+            type: string
+          required: true
+          description: ID of the action to get
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSingleAction'
+    patch:
+      summary: Updates a action by ID.
+      description: TODO
+      parameters:
+        - in: path
+          name: actionID
+          schema:
+            type: string
+          required: true
+          description: ID of the action to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Action'
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSingleAction'
+    delete:
+      summary: Deletes a action by ID.
+      description: TODO
+      parameters:
+        - in: path
+          name: actionID
+          schema:
+            type: string
+          required: true
+          description: ID of the action to delete
+      responses:
+        "200":
+          description: TODO
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+
+components:
+  schemas:
+    Metadata:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        total_pages:
+          type: integer
+        page_size:
+          type: integer
+        total_records:
+          type: integer
+    Rule:
+      type: object
+      properties:
+        action:
+          type: string
+        formula:
+          type: string
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+        school_id:
+          type: string
+          format: uuid
+    ResponseManyRules:
+      type: object
+      properties:
+        body:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rule'
+        metadata:
+            $ref: '#/components/schemas/Metadata'
+    ResponseSingleRule:
+      type: object
+      properties:
+        body:
+            $ref: '#/components/schemas/Rule'
+    Condition:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+        school_id:
+          type: string
+          format: uuid
+    ResponseManyConditions:
+      type: object
+      properties:
+        body:
+          type: array
+          items:
+            $ref: '#/components/schemas/Condition'
+        metadata:
+            $ref: '#/components/schemas/Metadata'
+    ResponseSingleCondition:
+      type: object
+      properties:
+        body:
+            $ref: '#/components/schemas/Condition'
+    Action:
+      type: object
+      properties:
+        action_msg:
+          type: string
+          description: "Human Readable Message such as: 'Increase tuition by 10%' or 'Request TAX Doc'"
+        action_type:
+          type: string
+          enum:
+            - "request_document"
+            - "tuition_increase_email"
+            - "tuition_increase_portal_alert"
+        change:
+          type: string
+          description: "Human Readable Message such as: 'Increase 10%' or '2025 W2 Guardian B'"
+        formula:
+          type: string
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+        school_id:
+          type: string
+          format: uuid
+    ResponseManyActions:
+      type: object
+      properties:
+        body:
+          type: array
+          items:
+            $ref: '#/components/schemas/Action'
+        metadata:
+            $ref: '#/components/schemas/Metadata'
+    ResponseSingleAction:
+      type: object
+      properties:
+        body:
+            $ref: '#/components/schemas/Action'

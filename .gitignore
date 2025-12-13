@@ -1,0 +1,7 @@
+.DS_Store
+__pycache__
+*.key
+*.crt
+*.env
+.pytest_cache
+.venv
