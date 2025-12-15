@@ -57,6 +57,7 @@ For mutations with variables:
 **Queries:**
 - `rules` - Get all rules
 - `rule(id: ID!)` - Get single rule
+- `ruleDryRun(ruleId: ID!, applicationId: ID!)` - Preview rule evaluation without executing actions
 
 **Mutations:**
 - `createRule(name: String!, formula: String, action: String)` - Create rule
@@ -120,6 +121,24 @@ For mutations with variables:
     id
     name
     formula
+  }
+}
+```
+
+### Dry-run a rule (preview evaluation)
+```graphql
+{
+  ruleDryRun(
+    ruleId: "30c12b0e-18fb-4b7d-b3bf-954336607e7b"
+    applicationId: "e9f3c58e-28a6-438f-8caa-9e1f0c7a2e2f"
+  ) {
+    finalEval
+    formula
+    actionId
+    actionName
+    docIdTiedToAction
+    truthTable
+    familyInfoUsed
   }
 }
 ```

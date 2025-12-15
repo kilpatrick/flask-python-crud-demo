@@ -203,6 +203,45 @@
             "description": "Soft delete a rule (sets deletedAt timestamp)."
           },
           "response": []
+        },
+        {
+          "name": "- Trigger Rule (Normally Done on App Submission)",
+          "id": "886b5459-d25d-4b62-a9bd-babe6eef9798",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"query\": \"{ ruleDryRun(ruleId: \\\"{{RULE_ID_EX}}\\\", applicationId: \\\"{{APPLICATION_ID_EX}}\\\") { finalEval formula actionId actionName docIdTiedToAction truthTable familyInfoUsed } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Soft delete a rule (sets deletedAt timestamp)."
+          },
+          "response": []
         }
       ],
       "id": "30675385-1c6b-4296-bd5a-7ffa4f2d9e35",

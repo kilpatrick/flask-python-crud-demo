@@ -1,6 +1,6 @@
 import graphene
 
-from server.graphql_types import Rule, Condition, Action
+from server.graphql_types import Rule, Condition, Action, RuleDryRun
 from services import rules
 from services import graphql_conditions
 from services import graphql_actions
@@ -12,6 +12,12 @@ class Query(graphene.ObjectType):
     # Rules queries
     rules = graphene.List(Rule, description="Get all rules for the authenticated school")
     rule = graphene.Field(Rule, id=graphene.ID(required=True), description="Get a rule by ID")
+    rule_dry_run = graphene.Field(
+        RuleDryRun,
+        rule_id=graphene.ID(required=True),
+        application_id=graphene.ID(required=True),
+        description="Preview rule evaluation with application data without executing actions"
+    )
     
     # Conditions queries
     conditions = graphene.List(Condition, description="Get all conditions for the authenticated school")
@@ -35,6 +41,14 @@ class Query(graphene.ObjectType):
         if not school_id:
             return None
         rsp_data, _ = rules.read_rule_by_id(school_id, id)
+        return rsp_data
+
+    def resolve_rule_dry_run(self, info, rule_id, application_id):
+        """Resolve rule dry-run query"""
+        school_id = info.context.get('school_id')
+        if not school_id:
+            return None
+        rsp_data, _ = rules.trigger_rule_dry_run(school_id, rule_id, application_id)
         return rsp_data
     
     def resolve_conditions(self, info):
