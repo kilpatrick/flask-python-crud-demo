@@ -75,12 +75,13 @@ def delete_rule_by_id(school_id: str, rule_id: str) -> [dict, dict]:
 # Special Case: This is for easy testing, but would happen on App submission in a real use case.
 # This is the equivalent of a `--dry-run` flag to show the details about what the rules engine
 # would have decided had it really been triggered.
-def trigger_rule_dry_run(school_id: str, rule_id: str) -> [dict, dict]:
+def trigger_rule_dry_run(school_id: str, rule_id: str, application_id: str) -> [dict, dict]:
   record = MOCKED_DB["rules"][rule_id]
   if record and record.get("deleted_at") == None and record.get("school_id") == school_id:
 
     # MOCKED Family info
-    TODO_family_details_MOCKED = MOCKED_DB["families"]["8b6df376-0690-4b59-9208-00a8209904db"]
+    family_id = MOCKED_DB["applications"][application_id].get("family_id")
+    TODO_family_details_MOCKED = MOCKED_DB["families"][family_id]
 
     # Rules
     record = MOCKED_DB["rules"][rule_id]
@@ -97,6 +98,7 @@ def trigger_rule_dry_run(school_id: str, rule_id: str) -> [dict, dict]:
     dry_run_body = {
       "action_id": action_id,
       "action_name": None,
+      "application_id": application_id,
       "doc_id_tied_to_action": doc_id_tied_to_action,
       "family_info_used": TODO_family_details_MOCKED,
       "final_eval": final_eval,

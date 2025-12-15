@@ -228,13 +228,14 @@
               }
             ],
             "url": {
-              "raw": "{{BASE_URL}}/rules/30c12b0e-18fb-4b7d-b3bf-954336607e7b/dry_run",
+              "raw": "{{BASE_URL}}/rules/{{RULE_ID_EX}}/{{APPLICATION_ID_EX}}/dry_run",
               "host": [
                 "{{BASE_URL}}"
               ],
               "path": [
                 "rules",
-                "30c12b0e-18fb-4b7d-b3bf-954336607e7b",
+                "{{RULE_ID_EX}}",
+                "{{APPLICATION_ID_EX}}",
                 "dry_run"
               ]
             }
