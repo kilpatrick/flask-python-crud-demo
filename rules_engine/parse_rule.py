@@ -33,10 +33,7 @@ def get_rule_conditions(rule_formula: str, family_details: dict[str, any]) -> di
     truth_table = {}
     for condition in conditions:
         if condition not in conditions:
-            # This should be unreachable. If you're debugging this. Fix
-            # whatever is allowing this to be reachable (such as an 
-            # whatever process allowed an enum to hit the db that is not
-            # represented here.)
+            # In Prod, you'd want to make it essentially impossible for a condition to NOT be in conditions.
             raise ValueError(f"Unknown Condition: '{condition}' in rule.")
         truth_table[condition] = condtion_checks[condition]()
 
