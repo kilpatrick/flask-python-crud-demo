@@ -11,7 +11,7 @@ class Rules(DBSharedCols):
 class Actions(DBSharedCols):
     rule_id: UUID  # fkey(rules.id)
     name: str      # ex: "Is Business Owner"
-    action_type: str  #  enmum("request_doc", "tuition_increase_email", "tuition_increase_portal_alert")
+    action_type: str  #  enum("request_doc", "tuition_increase_email", "tuition_increase_portal_alert")
     action_msg:str    #  ex: "Increase tuition by 10%" OR "Request TAX Doc"
     change: str       #  ex: "Increase 10%" or "2025 W2 Guardian B" 
 

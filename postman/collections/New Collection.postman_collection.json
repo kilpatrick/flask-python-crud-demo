@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "30d3d6b0-b669-4add-9eca-3805c4f809e6",
-    "name": "Local: Rules",
+    "name": "REST - Local: Rules",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
