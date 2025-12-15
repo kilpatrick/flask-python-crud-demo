@@ -97,12 +97,12 @@ def trigger_rule_dry_run(school_id: str, rule_id: str, application_id: str) -> [
     # --dry-run vals
     dry_run_body = {
       "action_id": action_id,
-      "action_name": None,
+      "action_name": action_name,
       "application_id": application_id,
       "doc_id_tied_to_action": doc_id_tied_to_action,
       "family_info_used": TODO_family_details_MOCKED,
       "final_eval": final_eval,
-      "formula ": formula,
+      "formula": formula,
       "rule_id": rule_id,
       "truth_table": truth_table,
     }
