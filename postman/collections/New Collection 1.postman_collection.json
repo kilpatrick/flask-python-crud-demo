@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "e8d5b255-0e91-4ae1-a1a7-369d51f3b532",
-    "name": "GraphQL - Local: Rules",
+    "name": "GraphQL - Local",
     "description": "GraphQL API collection for Rules, Conditions, and Actions. All requests use POST to /graphql endpoint.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },

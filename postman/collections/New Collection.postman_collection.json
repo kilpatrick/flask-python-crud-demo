@@ -1,216 +1,248 @@
 {
   "info": {
     "_postman_id": "30d3d6b0-b669-4add-9eca-3805c4f809e6",
-    "name": "REST - Local: Rules",
+    "name": "REST - Local",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "name": "Create Rule",
-      "id": "55ce9df4-96bd-469c-85f4-753e7345c0c3",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "{{AUTH_TOKEN}}",
-            "type": "text"
-          }
-        ],
-        "url": {
-          "raw": "{{BASE_URL}}/rules",
-          "host": [
-            "{{BASE_URL}}"
-          ],
-          "path": [
-            "rules"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Read Rules (Many)",
-      "id": "55018f20-3434-427c-a24f-924dfb23c262",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "{{AUTH_TOKEN}}",
-            "type": "text"
-          }
-        ],
-        "url": {
-          "raw": "{{BASE_URL}}/rules",
-          "host": [
-            "{{BASE_URL}}"
-          ],
-          "path": [
-            "rules"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Read Rule (Single)",
-      "id": "b903ae1c-502b-4d42-968d-134fa7cb18de",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "{{AUTH_TOKEN}}",
-            "type": "text"
-          }
-        ],
-        "url": {
-          "raw": "{{BASE_URL}}/rules/30c12b0e-18fb-4b7d-b3bf-954336607e7b",
-          "host": [
-            "{{BASE_URL}}"
-          ],
-          "path": [
-            "rules",
-            "30c12b0e-18fb-4b7d-b3bf-954336607e7b"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Update Rule (by ID)",
-      "id": "085ddd22-1daf-44a8-8bf6-a49d03a03638",
-      "request": {
-        "method": "PATCH",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "{{AUTH_TOKEN}}",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n    \"name\": \"Some new Name\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+      "name": "Rules",
+      "item": [
+        {
+          "name": "Create Rule",
+          "id": "55ce9df4-96bd-469c-85f4-753e7345c0c3",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/rules",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "rules"
+              ]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "{{BASE_URL}}/rules/30c12b0e-18fb-4b7d-b3bf-954336607e7b",
-          "host": [
-            "{{BASE_URL}}"
-          ],
-          "path": [
-            "rules",
-            "30c12b0e-18fb-4b7d-b3bf-954336607e7b"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Delete Rule (by ID)",
-      "id": "c74cf360-465a-409f-bd7c-887dc9eadc89",
-      "request": {
-        "method": "DELETE",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "{{AUTH_TOKEN}}",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n    \"name\": \"Some new Name\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+        {
+          "name": "Read Rules (Many)",
+          "id": "55018f20-3434-427c-a24f-924dfb23c262",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/rules",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "rules"
+              ]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "{{BASE_URL}}/rules/30c12b0e-18fb-4b7d-b3bf-954336607e7b",
-          "host": [
-            "{{BASE_URL}}"
-          ],
-          "path": [
-            "rules",
-            "30c12b0e-18fb-4b7d-b3bf-954336607e7b"
-          ]
+        {
+          "name": "Read Rule (Single)",
+          "id": "b903ae1c-502b-4d42-968d-134fa7cb18de",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/rules/30c12b0e-18fb-4b7d-b3bf-954336607e7b",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "rules",
+                "30c12b0e-18fb-4b7d-b3bf-954336607e7b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Rule (by ID)",
+          "id": "085ddd22-1daf-44a8-8bf6-a49d03a03638",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Some new Name\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/rules/30c12b0e-18fb-4b7d-b3bf-954336607e7b",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "rules",
+                "30c12b0e-18fb-4b7d-b3bf-954336607e7b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Rule (by ID)",
+          "id": "c74cf360-465a-409f-bd7c-887dc9eadc89",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Some new Name\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/rules/30c12b0e-18fb-4b7d-b3bf-954336607e7b",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "rules",
+                "30c12b0e-18fb-4b7d-b3bf-954336607e7b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "_Error Test: Expect Expired Token",
+          "id": "8e1252c0-3e4b-43f4-ad47-63c9bad32d72",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN_EXPIRED}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/rules",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "rules"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "_Error Test: Expect Rejected Signature",
+          "id": "635ae629-e66d-4439-9626-0f9f607d35dd",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN_INVALID_SIGNATURE}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/rules",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "rules"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Status Check",
+          "id": "6980525c-618e-4c69-bd9d-a9237e8c4746",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/status",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "- Trigger Rule (Normally Done on App Submission)",
+          "id": "db941012-e966-4d22-985b-afcccae6cf87",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/rules/30c12b0e-18fb-4b7d-b3bf-954336607e7b/dry_run",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "rules",
+                "30c12b0e-18fb-4b7d-b3bf-954336607e7b",
+                "dry_run"
+              ]
+            }
+          },
+          "response": []
         }
-      },
-      "response": []
-    },
-    {
-      "name": "_Error Test: Expect Expired Token",
-      "id": "8e1252c0-3e4b-43f4-ad47-63c9bad32d72",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "{{AUTH_TOKEN_EXPIRED}}",
-            "type": "text"
-          }
-        ],
-        "url": {
-          "raw": "{{BASE_URL}}/rules",
-          "host": [
-            "{{BASE_URL}}"
-          ],
-          "path": [
-            "rules"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "_Error Test: Expect Rejected Signature",
-      "id": "635ae629-e66d-4439-9626-0f9f607d35dd",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "{{AUTH_TOKEN_INVALID_SIGNATURE}}",
-            "type": "text"
-          }
-        ],
-        "url": {
-          "raw": "{{BASE_URL}}/rules",
-          "host": [
-            "{{BASE_URL}}"
-          ],
-          "path": [
-            "rules"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Status Check",
-      "id": "6980525c-618e-4c69-bd9d-a9237e8c4746",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{BASE_URL}}/status",
-          "host": [
-            "{{BASE_URL}}"
-          ],
-          "path": [
-            "status"
-          ]
-        }
-      },
-      "response": []
+      ],
+      "id": "d85be1b0-61df-4bfa-bf11-7113a6388ec3"
     }
   ]
 }

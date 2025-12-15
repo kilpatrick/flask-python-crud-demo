@@ -62,6 +62,15 @@ def delete_rule_by_id(decoded_token, rule_id):
     response = { **BASE_RSP, "status": rsp_data, "metadata": metadata }
     return jsonify(response), 200
 
+# Special Case: This is for easy testing, but would happen on App submission in a real use case
+@app.route('/rules/<rule_id>/dry_run', methods=["GET"])
+@auth_check
+def trigger_rule_dry_run(decoded_token, rule_id):
+    school_id = decoded_token.get("organization", {}).get("id")
+    rsp_data, metadata = rules.trigger_rule_dry_run(school_id, rule_id)
+    response = { **BASE_RSP, "body": rsp_data, "metadata": metadata }
+    return jsonify(response), 200
+
 
 # ————  REST: Public Routes  ——————
 # WARNING: These are public NO AUTH routes.
