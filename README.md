@@ -21,5 +21,9 @@ It is assumed that you have:
   - If you want to test outside of Postman, you can manually find the `BASE_URL` and `AUTH_TOKEN` values required for a successful call in the `./postman/environments/` file.
   - The APIs are also partially documented in OpenAPI 3.x yaml format in the `./api/rules.yaml` file.
 
+### Triggering a Rule
+
+Rules are trigger on application submission, but there is no Application Service inside of this demo Rules Service. It is assumed that the Application Service would upon receiving a successful application submission submit to this service. The outcome of that process can be view (with no data mutation) by a `GET` to `{{BASE_URL}}/rules/30c12b0e-18fb-4b7d-b3bf-954336607e7b/dry_run`.
+
 ---
 Copyright © 2025. All rights reserved.

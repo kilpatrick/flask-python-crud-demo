@@ -1,4 +1,4 @@
-# --------------------------------------------
+
 # WIP STUB: OpenAPI Documentation
 # If you don't have it setup locally, you can use
 # Swagger's visualizer for an interactive, graphical
@@ -300,17 +300,30 @@ components:
       properties:
         action:
           type: string
+        name:
+          type: string
         formula:
           type: string
+        # ---- Base Cols (shared by all tables) -----
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
         id:
           type: string
           format: uuid
           readOnly: true
-        name:
-          type: string
         school_id:
           type: string
           format: uuid
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
     ResponseManyRules:
       type: object
       properties:
@@ -328,15 +341,37 @@ components:
     Condition:
       type: object
       properties:
+        name:
+          type: string
+        condition_type:
+          type: string
+          enum:
+            - "business_owner_false"
+            - "business_owner_true"
+            - "family_status_new"
+            - "family_status_returning"
+            - "file_taxes_2025_false"
+            - "file_taxes_2025_true"
+        # ---- Base Cols (shared by all tables) -----
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
         id:
           type: string
           format: uuid
           readOnly: true
-        name:
-          type: string
         school_id:
           type: string
           format: uuid
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
     ResponseManyConditions:
       type: object
       properties:
@@ -368,15 +403,28 @@ components:
           description: "Human Readable Message such as: 'Increase 10%' or '2025 W2 Guardian B'"
         formula:
           type: string
+        name:
+          type: string
+        # ---- Base Cols (shared by all tables) -----
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
         id:
           type: string
           format: uuid
           readOnly: true
-        name:
-          type: string
         school_id:
           type: string
           format: uuid
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
     ResponseManyActions:
       type: object
       properties:
