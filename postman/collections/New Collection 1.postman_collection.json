@@ -239,7 +239,7 @@
                 "graphql"
               ]
             },
-            "description": "Soft delete a rule (sets deletedAt timestamp)."
+            "description": "Shows what would happen when on application submission, a given application triggers a rule evaluation."
           },
           "response": []
         }
