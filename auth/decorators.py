@@ -14,16 +14,15 @@ from pathlib import Path
 # so, this isn't how you want to store a public key in a real app.
 PUBLIC_KEY = Path('auth/public.key').read_text()
 
-def auth_check(f):
-    @wraps(f)
+def auth_check(flask_view_func):
+    @wraps(flask_view_func)
     def decorator(*args, **kwargs):
         token = request.headers.get('Authorization')
         if not token: 
             return make_response(jsonify({"message": "No Token in Request"}), 401)
         try:
-            data = jwt.decode(token, PUBLIC_KEY, algorithms=["RS256"])
-            print("No exceptions triggered.")
-            return f(*args, **kwargs)
+            decoded_token = jwt.decode(token, PUBLIC_KEY, algorithms=["RS256"])
+            return flask_view_func(decoded_token, *args, **kwargs)
         except jwt.ExpiredSignatureError:
             return make_response(jsonify({"message": "jwt.ExpiredSignatureError"}), 401)
         except jwt.InvalidTokenError as e:
