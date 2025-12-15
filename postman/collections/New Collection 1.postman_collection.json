@@ -1,0 +1,740 @@
+{
+  "info": {
+    "_postman_id": "e8d5b255-0e91-4ae1-a1a7-369d51f3b532",
+    "name": "GraphQL - Local: Rules",
+    "description": "GraphQL API collection for Rules, Conditions, and Actions. All requests use POST to /graphql endpoint.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Rules",
+      "item": [
+        {
+          "name": "Create Rule",
+          "id": "graphql-create-rule",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { createRule(name: \\\"New Rule\\\", formula: \\\"(CONDITION_01 OR CONDITION_02)\\\", action: \\\"action-id-here\\\") { rule { id name formula action schoolId createdAt } } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Create a new rule. All fields except name are optional."
+          },
+          "response": []
+        },
+        {
+          "name": "Read Rules (Many)",
+          "id": "graphql-read-rules-many",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ rules { id name formula action schoolId createdAt updatedAt deletedAt } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Get all rules for the authenticated school. Request only the fields you need."
+          },
+          "response": []
+        },
+        {
+          "name": "Read Rule (Single)",
+          "id": "graphql-read-rule-single",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ rule(id: \\\"30c12b0e-18fb-4b7d-b3bf-954336607e7b\\\") { id name formula action schoolId createdAt updatedAt deletedAt } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Get a single rule by ID. Request only the fields you need."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Rule (by ID)",
+          "id": "graphql-update-rule",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { updateRule(id: \\\"30c12b0e-18fb-4b7d-b3bf-954336607e7b\\\", name: \\\"Updated Rule Name\\\") { rule { id name formula action updatedAt } } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Update a rule. Only include fields you want to update (name, formula, or action)."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Rule (by ID)",
+          "id": "graphql-delete-rule",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { deleteRule(id: \\\"30c12b0e-18fb-4b7d-b3bf-954336607e7b\\\") { success message } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Soft delete a rule (sets deletedAt timestamp)."
+          },
+          "response": []
+        }
+      ],
+      "id": "30675385-1c6b-4296-bd5a-7ffa4f2d9e35",
+      "description": "GraphQL operations for Rules"
+    },
+    {
+      "name": "Conditions",
+      "item": [
+        {
+          "name": "Create Condition",
+          "id": "graphql-create-condition",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { createCondition(name: \\\"Is Business Owner\\\") { condition { id name schoolId createdAt } } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Create a new condition."
+          },
+          "response": []
+        },
+        {
+          "name": "Read Conditions (Many)",
+          "id": "graphql-read-conditions-many",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ conditions { id name schoolId createdAt updatedAt } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Get all conditions for the authenticated school."
+          },
+          "response": []
+        },
+        {
+          "name": "Read Condition (Single)",
+          "id": "graphql-read-condition-single",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ condition(id: \\\"42e1d754-47e8-4f15-a7b3-8e5b2367aae2\\\") { id name schoolId createdAt updatedAt } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Get a single condition by ID."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Condition (by ID)",
+          "id": "graphql-update-condition",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { updateCondition(id: \\\"42e1d754-47e8-4f15-a7b3-8e5b2367aae2\\\", name: \\\"Updated Condition Name\\\") { condition { id name updatedAt } } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Update a condition."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Condition (by ID)",
+          "id": "graphql-delete-condition",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { deleteCondition(id: \\\"42e1d754-47e8-4f15-a7b3-8e5b2367aae2\\\") { success message } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Soft delete a condition."
+          },
+          "response": []
+        }
+      ],
+      "id": "fb6bb184-4ff4-4e3b-8a8c-23070f43fe5b",
+      "description": "GraphQL operations for Conditions"
+    },
+    {
+      "name": "Actions",
+      "item": [
+        {
+          "name": "Create Action",
+          "id": "graphql-create-action",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { createAction(name: \\\"Increase Tuition\\\", actionType: \\\"tuition_increase_email\\\", actionMsg: \\\"Increase tuition by 10%\\\", change: \\\"Increase 10%\\\", formula: \\\"x * 1.1\\\") { action { id name actionType actionMsg change formula schoolId createdAt } } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Create a new action. Only name is required; other fields are optional."
+          },
+          "response": []
+        },
+        {
+          "name": "Read Actions (Many)",
+          "id": "graphql-read-actions-many",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ actions { id name actionType actionMsg change formula schoolId createdAt updatedAt } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Get all actions for the authenticated school."
+          },
+          "response": []
+        },
+        {
+          "name": "Read Action (Single)",
+          "id": "graphql-read-action-single",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ action(id: \\\"f221f039-98fb-4e8a-8ec8-8fc0f0bf411b\\\") { id name actionType actionMsg change formula schoolId createdAt updatedAt } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Get a single action by ID."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Action (by ID)",
+          "id": "graphql-update-action",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { updateAction(id: \\\"f221f039-98fb-4e8a-8ec8-8fc0f0bf411b\\\", name: \\\"Updated Action Name\\\", actionMsg: \\\"New message\\\") { action { id name actionType actionMsg change formula updatedAt } } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Update an action. Only include fields you want to update."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Action (by ID)",
+          "id": "graphql-delete-action",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { deleteAction(id: \\\"f221f039-98fb-4e8a-8ec8-8fc0f0bf411b\\\") { success message } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Soft delete an action."
+          },
+          "response": []
+        }
+      ],
+      "id": "ff3d3051-17c7-4227-b2c8-954b50149af8",
+      "description": "GraphQL operations for Actions"
+    },
+    {
+      "name": "_Error Tests",
+      "item": [
+        {
+          "name": "_Error Test: Expect Expired Token",
+          "id": "graphql-error-expired-token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN_EXPIRED}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ rules { id name } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Test with expired token - should return 401"
+          },
+          "response": []
+        },
+        {
+          "name": "_Error Test: Expect Rejected Signature",
+          "id": "graphql-error-invalid-signature",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN_INVALID_SIGNATURE}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ rules { id name } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Test with invalid signature - should return 401"
+          },
+          "response": []
+        },
+        {
+          "name": "_Error Test: Invalid Query",
+          "id": "graphql-error-invalid-query",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{AUTH_TOKEN}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ invalidField { id } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/graphql",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Test with invalid GraphQL query - should return errors in response"
+          },
+          "response": []
+        }
+      ],
+      "id": "863fde34-3396-42dd-9f9e-905752d475f5",
+      "description": "Error test cases for GraphQL endpoint"
+    }
+  ]
+}

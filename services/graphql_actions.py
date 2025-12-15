@@ -19,11 +19,11 @@ TODO_METADATA = {
 # ------------------------------------------------------
 
 
-def create_rule(school_id: str, request_body: dict) -> [dict, dict]:
+def create_action(school_id: str, request_body: dict) -> [dict, dict]:
   import uuid
   new_id = str(uuid.uuid4())
   now = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
-  new_rule = {
+  new_action = {
     "id": new_id,
     "school_id": school_id,
     "created_at": now,
@@ -31,42 +31,41 @@ def create_rule(school_id: str, request_body: dict) -> [dict, dict]:
     "deleted_at": None,
     **request_body
   }
-  db_seed["rules"][new_id] = new_rule
-  return new_rule, TODO_METADATA
+  db_seed["actions"][new_id] = new_action
+  return new_action, TODO_METADATA
 
-def read_all_rules(school_id: str) -> [dict, dict]:
-  rules_filtered_by_school = []
-  for rule_id in db_seed["rules"]:
-    record = db_seed["rules"][rule_id]
+def read_all_actions(school_id: str) -> [dict, dict]:
+  actions_filtered_by_school = []
+  for action_id in db_seed["actions"]:
+    record = db_seed["actions"][action_id]
     row_school_id = record.get("school_id")
     if school_id  and record.get("deleted_at") == None and row_school_id and row_school_id == school_id:
-      rules_filtered_by_school.append(record)
-  return rules_filtered_by_school, TODO_METADATA
+      actions_filtered_by_school.append(record)
+  return actions_filtered_by_school, TODO_METADATA
 
-def read_rule_by_id(school_id: str, rule_id: str) -> [dict, dict]:
-  record = db_seed["rules"][rule_id]
+def read_action_by_id(school_id: str, action_id: str) -> [dict, dict]:
+  record = db_seed["actions"].get(action_id)
   if record and record.get("deleted_at") == None and record.get("school_id") == school_id:
     return record, TODO_METADATA
   return None, TODO_METADATA
 
-def update_rule_by_id(school_id: str, rule_id: str, update_body: dict) -> [dict, dict]:
-  record = db_seed["rules"].get(rule_id)
+def update_action_by_id(school_id: str, action_id: str, update_body: dict) -> [dict, dict]:
+  record = db_seed["actions"].get(action_id)
   if record and record.get("deleted_at") == None and record.get("school_id") == school_id:
     # WARNING: Remember there's lots of handwaving going on here. This is going to allow for
     # things like the user changing the UUID of records which is a terrible, horrible thing.
     # Don't actually do that.
-    updated_record = {**db_seed["rules"][rule_id], **update_body}
+    updated_record = {**db_seed["actions"][action_id], **update_body}
     updated_record["updated_at"] = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
-    db_seed["rules"][rule_id] = updated_record
-    return db_seed["rules"][rule_id], TODO_METADATA
+    db_seed["actions"][action_id] = updated_record
+    return db_seed["actions"][action_id], TODO_METADATA
   return None, TODO_METADATA
 
-def delete_rule_by_id(school_id: str, rule_id: str) -> [dict, dict]:
-  record = db_seed["rules"][rule_id]
+def delete_action_by_id(school_id: str, action_id: str) -> [dict, dict]:
+  record = db_seed["actions"].get(action_id)
   if record and record.get("deleted_at") == None and record.get("school_id") == school_id:
     mocked_cur_date_getter_setter = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
-    updated_record = {**db_seed["rules"][rule_id], "deleted_at": mocked_cur_date_getter_setter}
-    db_seed["rules"][rule_id] = updated_record
+    updated_record = {**db_seed["actions"][action_id], "deleted_at": mocked_cur_date_getter_setter}
+    db_seed["actions"][action_id] = updated_record
     return "Record Deleted", TODO_METADATA
   return None, TODO_METADATA
-
